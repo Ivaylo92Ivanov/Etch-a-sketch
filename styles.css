@@ -16,7 +16,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(16, 6.25%);
     grid-template-rows: repeat(16, 6.25%);
-    margin: 0 30% 0 30%;
+    margin: 0% 30% 0% 30%;
 }
 
 .grid > div {
