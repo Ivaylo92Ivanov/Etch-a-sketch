@@ -1,19 +1,50 @@
+// Grid creation 
+
 const grid = document.querySelector(".grid");
-for (let i=0; i<256; i++) {
-    const currentDiv = document.createElement("div");
-    // currentDiv.textContent = `${i}`;
-    // currentDiv.height = 10;
-    grid.appendChild(currentDiv);
-}
 
-const gridList = grid.childNodes
+function createGrid(rowsAndCols) {
+    if (rowsAndCols > 48) {
+        rowsAndCols = 48;
+    };
 
-gridList.forEach(box => box.addEventListener("mousedown", () =>
-box.classList.add("colored")));
+    if (rowsAndCols < 1) {
+        rowsAndCols = 1;
+    };
+    
+    const gridSize = rowsAndCols;
+    grid.innerHTML="";
 
-function resetGrid() {
-    gridList.forEach(box => box.classList.remove("colored"))
+    for (let i=0; i<(gridSize * gridSize); i++) {
+        const currentDiv = document.createElement("div");
+        grid.appendChild(currentDiv);
+    };
+
+    grid.style.gridTemplateColumns = `repeat(${rowsAndCols}, auto`;
+    grid.style.gridTemplateRows = `repeat(${rowsAndCols}, auto`;
+
+    makeGridColorable(grid);    
 };
 
-const resetButton = document.querySelector("#reset")
-resetButton.addEventListener("click", () => resetGrid())
+function makeGridColorable(grid) {
+    let gridList = grid.childNodes;
+    gridList.forEach(box => box.addEventListener("mouseover", () =>
+    box.classList.add("colored")));
+    return
+};
+
+createGrid(16);
+
+const resizeButton = document.querySelector("#size-prompt");
+resizeButton.addEventListener("click", () => createGrid(prompt("How many rows/columns? (between 1-48)")));
+
+// Resetting grid colors
+
+function resetGridColor(grid) {
+    gridList = grid.childNodes;
+    gridList.forEach(box => box.classList.remove("colored"));
+};
+
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", () => resetGridColor(grid));
+
+
