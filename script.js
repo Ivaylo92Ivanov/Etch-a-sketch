@@ -1,16 +1,14 @@
-// Grid creation 
+// Grid creation and resize
 
 const grid = document.querySelector(".grid");
 
 function createGrid(rowsAndCols) {
-    if (rowsAndCols > 48) {
-        rowsAndCols = 48;
-    };
+    if (rowsAndCols > 48) rowsAndCols = 48;    
 
-    if (rowsAndCols < 1) {
-        rowsAndCols = 1;
-    };
+    if (rowsAndCols < 1) rowsAndCols = 1;
     
+    if (isNaN(rowsAndCols)) rowsAndCols = 16;
+
     const gridSize = rowsAndCols;
     grid.innerHTML="";
 
@@ -29,7 +27,7 @@ function makeGridColorable(grid) {
     let gridList = grid.childNodes;
     gridList.forEach(box => box.addEventListener("mouseover", () =>
     box.classList.add("colored")));
-    return
+  
 };
 
 createGrid(16);
