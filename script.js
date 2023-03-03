@@ -3,7 +3,7 @@
 const grid = document.querySelector(".grid");
 
 function createGrid(rowsAndCols) {
-    if (rowsAndCols > 48) rowsAndCols = 48;    
+    if (rowsAndCols > 64) rowsAndCols = 64;    
 
     if (rowsAndCols < 1) rowsAndCols = 1;
     
@@ -20,8 +20,14 @@ function createGrid(rowsAndCols) {
     grid.style.gridTemplateColumns = `repeat(${rowsAndCols}, auto`;
     grid.style.gridTemplateRows = `repeat(${rowsAndCols}, auto`;
 
-    makeGridColorable(grid);    
+    makeGridColorable(grid);
+    updateSizeInfo(rowsAndCols);
 };
+
+function updateSizeInfo (size) {
+    const para = document.querySelector("#size-info");
+    para.textContent = `Current grid size is ${size}x${size}`;
+}
 
 function makeGridColorable(grid) {
     let gridList = grid.childNodes;
@@ -33,7 +39,7 @@ function makeGridColorable(grid) {
 createGrid(16);
 
 const resizeButton = document.querySelector("#size-prompt");
-resizeButton.addEventListener("click", () => createGrid(prompt("How many rows/columns? (between 1-48)")));
+resizeButton.addEventListener("click", () => createGrid(prompt("How many rows/columns? (between 1-64)")));
 
 // Resetting grid colors
 

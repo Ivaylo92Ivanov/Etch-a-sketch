@@ -16,24 +16,26 @@ h1 {
 }
 
 .frame {
-        height: 700px;
     background-color: rgba(65, 202, 72, 0.5);
     margin: 0% auto 0% auto;
     padding: 25px;
 }
 
 .grid {
-    border: 5px solid black;
+    border: 25px solid black;
+    border-radius: 8%;
     background-color: bisque;
     display: grid;
     width: 600px;
     height: 600px;
     margin: auto auto;
+    overflow: hidden;
 }
 
 .grid > div {
     aspect-ratio: 1;
     border: 1px solid rgba(128,128,128,0.2);
+    
 }
 
 .grid > div.colored {
@@ -42,5 +44,20 @@ h1 {
 
 .menu {
     text-align: center;
-    padding: 25px;
+    padding-top: 25px;
+}
+
+#size-info {
+    padding:10px;
+    font-size: 25px;
+}
+
+h3 {
+    background-color: rgb(151, 143, 158);
+    text-align: center;
+    padding: 50px 0px 50px 0px;
+}
+
+html {
+    background-color: rgb(151, 143, 158);
 }
